@@ -78,10 +78,10 @@ function set_unix_endline {
 }
 
 #update_git_repo "https://github.com/sasgis/sas.src" ${sas_src}
-#update_git_repo "https://github.com/sasgis/sas.translate" ${sas_lang}
+update_git_repo "https://github.com/sasgis/sas.translate" ${sas_lang}
 
 update_hg_repo "https://bitbucket.org/sas_team/sas.planet.src" ${sas_src}
-update_hg_repo "https://bitbucket.org/sas_team/sas.translate" ${sas_lang}
+#update_hg_repo "https://bitbucket.org/sas_team/sas.translate" ${sas_lang}
 
 get_translate
 merge_translate
