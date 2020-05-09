@@ -1,3 +1,5 @@
+Install [Git](https://git-scm.com/downloads).
+
 Download this repository [as zip archive](https://github.com/sasgis/sas.translate.dev/archive/master.zip) and unpack it to any folder. 
 
 Download and install [PoEdit 1.5.7](https://bitbucket.org/sas_team/sas.translate.dev/downloads/poedit-1.5.7-setup.exe)
