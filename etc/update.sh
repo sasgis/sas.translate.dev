@@ -19,20 +19,6 @@ function update_git_repo {
     fi
 }
 
-function update_hg_repo {
-
-    local url=$1
-    local path=$2
-    
-    if [ ! -d "${path}" ]; then
-        hg clone --insecure ${url} ${path}
-    else
-        cd ${path}
-        hg pull --insecure
-        hg update --clean
-    fi
-}
-
 function get_translate {
     
     local src="${sas_src}/src/"
@@ -77,11 +63,8 @@ function set_unix_endline {
     dos2unix -u es.po
 }
 
-#update_git_repo "https://github.com/sasgis/sas.src" ${sas_src}
+update_git_repo "https://github.com/sasgis/sas.planet.src" ${sas_src}
 update_git_repo "https://github.com/sasgis/sas.translate" ${sas_lang}
-
-update_hg_repo "https://bitbucket.org/sas_team/sas.planet.src" ${sas_src}
-#update_hg_repo "https://bitbucket.org/sas_team/sas.translate" ${sas_lang}
 
 get_translate
 merge_translate
