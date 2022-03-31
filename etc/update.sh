@@ -48,6 +48,7 @@ function merge_translate {
     msgmerge --update ru.po default.po
     msgmerge --update uk.po default.po
     msgmerge --update fr.po default.po
+    msgmerge --update tr.po default.po
     msgmerge --update es.po default.po
     
     rm -f *.po~
@@ -60,6 +61,7 @@ function set_unix_endline {
     dos2unix -u ru.po
     dos2unix -u uk.po
     dos2unix -u fr.po
+    dos2unix -u tr.po
     dos2unix -u es.po
 }
 
