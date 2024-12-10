@@ -4,6 +4,9 @@ etc="${1}etc"
 sas_src="${1}sas.sources"
 sas_lang="${1}sas.translate"
 
+# space-separated string of the language codes
+langs="es fa fr ru tr uk"
+
 function update_git_repo {
 
     local url=$1
@@ -45,11 +48,10 @@ function merge_translate {
     
     cd ${sas_lang}
     
-    msgmerge --update ru.po default.po
-    msgmerge --update uk.po default.po
-    msgmerge --update fr.po default.po
-    msgmerge --update tr.po default.po
-    msgmerge --update es.po default.po
+    for lang in ${langs} ; do
+        echo "Merging ${lang}.po"
+        msgmerge --update "${lang}.po" default.po
+    done
     
     rm -f *.po~
 }
@@ -58,11 +60,10 @@ function set_unix_endline {
     
     cd ${sas_lang}
     
-    dos2unix -u ru.po
-    dos2unix -u uk.po
-    dos2unix -u fr.po
-    dos2unix -u tr.po
-    dos2unix -u es.po
+    for lang in ${langs} ; do
+        echo "Fixing EOL for ${lang}.po"
+        dos2unix -u "${lang}.po"
+    done
 }
 
 update_git_repo "https://github.com/sasgis/sas.planet.src" ${sas_src}
@@ -71,3 +72,5 @@ update_git_repo "https://github.com/sasgis/sas.translate" ${sas_lang}
 get_translate
 merge_translate
 set_unix_endline
+
+echo "Done!"
